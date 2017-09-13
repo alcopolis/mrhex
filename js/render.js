@@ -10,7 +10,9 @@ function render() {
 
 	
 
-	// SETUP PAGE BACKGROUD
+	// SETUP PAGE BACKGROUND
+	ctx.fillStyle = 'rgb(255,255,255)';
+	ctx.fillRect(0, 0, trueCanvas.width, trueCanvas.height);
 	/*var bgPattern = new Image();
 	bgPattern.src = '../hextris/images/page-bg.jpg';
 	bgPattern.onLoad = function(){
@@ -18,10 +20,6 @@ function render() {
 		ctx.fillStyle = pattern;
 		ctx.fillRect(0, 0, trueCanvas.width, trueCanvas.height);
 	}*/
-
-	ctx.fillStyle = 'rgb(255,255,255)';
-	ctx.fillRect(0, 0, trueCanvas.width, trueCanvas.height);
-
  	
 
 

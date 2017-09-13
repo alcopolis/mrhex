@@ -533,7 +533,7 @@ body {
 	text-align: center;
 	width:240px; height:auto;
 	z-index:3000;
-	outline:1px solid #cdecde;
+	color:#999;
 }
 
 #mr-logo {
