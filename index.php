@@ -15,21 +15,21 @@
 
 </head>
 <body style="text-align:  center; color: #333;">
-	<?php update(); ?>
-	<h1>MyRepublic Logo</h1>
-	<h2>CompFest Logo</h2>
-
+	
 	<div class="wrapper">
+		<h1>MyRepublic Logo</h1>
+		<h2>CompFest Logo</h2>
 
         <p>Lorem ipsum dolor sit amet</p>
          
 		<form action="" method="post">
 			<input type="text" name="name" placeholder="Nama Lengkap" />
 			<input type="email" name="email" placeholder="Email" />
-			<input type="text" name="phone" placeholder="Nomor HP/Telepon - 0812 3456 XXXX" />
+			<input type="text" name="phone" placeholder="No. HP/Telepon - 0812 3456 XXXX" />
 			<input type="submit" value="Masuk" />
 		</form>
+
+		<p><span class="partners">Omen HP Logo</span> <span class="partners">Fox Ch Logo</span></p>	
 	</div>
-	<p>Omen HP Logo || Fox Ch Logo</p>	
 </body>
 </html>

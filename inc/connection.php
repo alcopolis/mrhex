@@ -36,7 +36,7 @@
 	$db = "hextris";
 	$table = "leads";
 
-	$conn = new mysqli($server, $user, $pass);
+	$conn = new mysqli($server, $user, $pass, $db);
 
 	// Check connection
 	if ($conn->connect_error) {
@@ -46,17 +46,40 @@
 
 
 
-
-
 // ------------- Main Script ------------//
+
+	if($_POST){
+		
+		//echo 'Hello ' . htmlspecialchars($_POST["name"]) . '!';
+		addPlayer($conn, $_POST);
+	}
+
 
 
 
 
 // ------------ Data CRUD Function -------------//
 
-	function update(){
-		//echo "Connected successfully";
+	function addPlayer($conn, $loginData = null){
+		// Add new player if not exist into db and retrieve the inserted data ID
+		$sql = "INSERT INTO leads (name, email, phone) VALUES ('" . $loginData['name'] . "','" . $loginData['email'] . "','" . $loginData['phone'] . "')";
+
+		if ($conn->query($sql) === TRUE) {
+		    //echo "New record created successfully";
+
+		    $sql = "SELECT id, name, score FROM leads WHERE email = '" . $loginData['email'] . "'";
+		    $result = $conn->query($sql);
+
+		    var_dump($result->fetch_assoc());
+		} else {
+		    echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+
+		$conn->close();
+	}
+
+	function updatePlayer($id){
+		//echo Update player score in db
 	}
 
 

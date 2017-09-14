@@ -6,15 +6,26 @@
 		background-color:#ecf0f1;
 	}
 
-	p{
-		padding-bottom: 2.5em;
-	}
+	p, form{padding-bottom: 2.5em;}
+	p:last-child{padding-bottom: initial;}
 
 	.wrapper{
 		width: 60%;
 		margin:25vh auto 0 auto;
-		padding: 20px;
-		background: #EFEFEF;
+		padding: 40px 0;
+		background: #CCC;
+	}
+
+	.partners{
+		display: inline-block;
+		background: #3f55ef;
+		width: 120px;
+		margin: 0 5px;
+		padding: 10px;
+	}
+
+	input{
+		padding: 5px 10px;
 	}
 	
 	/* ============ LOGO ============== */
