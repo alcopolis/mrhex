@@ -27,6 +27,12 @@
 	input{
 		padding: 5px 10px;
 	}
+
+	#err-msg{
+		font-size: 12px;
+		color: red;
+	}
+	#err-msg span.msg{display: block;}
 	
 	/* ============ LOGO ============== */
 

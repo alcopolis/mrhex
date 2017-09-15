@@ -22,12 +22,13 @@
 
         <p>Lorem ipsum dolor sit amet</p>
          
-		<form action="" method="post">
-			<input type="text" name="name" placeholder="Nama Lengkap" />
-			<input type="email" name="email" placeholder="Email" />
-			<input type="text" name="phone" placeholder="No. HP/Telepon - 0812 3456 XXXX" />
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+			<input type="text" name="name" value="<?php if (count($_POST) > 0) echo htmlspecialchars($_POST['name']);?>" placeholder="Nama Lengkap" />
+			<input type="email" name="email" value="<?php if (count($_POST) > 0) echo htmlspecialchars($_POST['email']);?>" placeholder="Email" />
+			<input type="text" name="phone" value="<?php if (count($_POST) > 0) echo htmlspecialchars($_POST['phone']);?>" placeholder="No. HP/Telepon" />
 			<input type="submit" value="Masuk" />
 		</form>
+		<p id="err-msg"><?php echo $validation_err; ?></p>
 
 		<p><span class="partners">Omen HP Logo</span> <span class="partners">Fox Ch Logo</span></p>	
 	</div>

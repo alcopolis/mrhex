@@ -113,6 +113,7 @@ function init(b) {
 	hideUIElements();
 	var saveState = localStorage.getItem("saveState") || "{}";
 	saveState = JSONfn.parse(saveState);
+
 	document.getElementById("canvas").className = "";
 	history = {};
 	importedHistory = undefined;

@@ -48,10 +48,25 @@
 
 // ------------- Main Script ------------//
 
+	$GLOBALS['validation_err'] = '';
+	
+
 	if($_POST){
 		
-		//echo 'Hello ' . htmlspecialchars($_POST["name"]) . '!';
-		addPlayer($conn, $_POST);
+		$is_valid = GUMP::is_valid($_POST, array(
+				'name' => 'required|alpha_numeric|min_len,3', 
+				'email' => 'required|valid_email|min_len,6', 
+				'phone' => 'required|numeric|max_len,12|min_len,6'
+			));
+
+		if($is_valid === TRUE){
+			addUser($conn, $_POST);
+		}else{
+			foreach($is_valid as $err){
+				$validation_err .= '<span class="msg">' . $err . '</span>';
+			}
+		}	
+		
 	}
 
 
@@ -60,17 +75,17 @@
 
 // ------------ Data CRUD Function -------------//
 
-	function addPlayer($conn, $loginData = null){
+	function addUser($conn, $loginData = null){
 		// Add new player if not exist into db and retrieve the inserted data ID
 		$sql = "INSERT INTO leads (name, email, phone) VALUES ('" . $loginData['name'] . "','" . $loginData['email'] . "','" . $loginData['phone'] . "')";
 
 		if ($conn->query($sql) === TRUE) {
-		    //echo "New record created successfully";
-
 		    $sql = "SELECT id, name, score FROM leads WHERE email = '" . $loginData['email'] . "'";
 		    $result = $conn->query($sql);
 
-		    var_dump($result->fetch_assoc());
+		    //var_dump($result->fetch_assoc());
+
+		    header("Location: index.html");
 		} else {
 		    echo "Error: " . $sql . "<br>" . $conn->error;
 		}
@@ -78,7 +93,7 @@
 		$conn->close();
 	}
 
-	function updatePlayer($id){
+	function updateUserScore($id){
 		//echo Update player score in db
 	}
 

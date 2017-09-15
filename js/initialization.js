@@ -119,6 +119,10 @@ function initialize(a) {
 			highscores = [];
 		}
 	}
+
+
+	console.log(saveState);
+
 	window.blocks = [];
 	window.MainHex;
 	window.gdx = 0;
