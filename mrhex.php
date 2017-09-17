@@ -1,3 +1,13 @@
+<?php
+		//require 'inc/connection.php';
+
+	 	session_start();
+
+		if($_SESSION['email'] === null || $_SESSION['email'] == ''){
+			//header("Location: index.php");
+		}
+?>
+
 <!DOCTYPE html>
 <html lang='en'>
 	<head>
@@ -54,7 +64,7 @@
 		<script type='text/javascript' src="js/input.js"></script>
 		<script type='text/javascript' src="js/main.js"></script>
 		<script type='text/javascript' src="js/initialization.js"></script>
-		<script type='text/javascript' charset='utf-8' src='cordova.js'></script>
+		<!-- <script type='text/javascript' charset='utf-8' src='cordova.js'></script> -->
 		<script src="vendor/sweet-alert.min.js"></script>
 		<link rel="stylesheet" href="style/rrssb.css"/>
 	</head>

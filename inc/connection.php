@@ -3,38 +3,10 @@
 // ----------- Validation Class -------------//
 	require "gump.class.php";
 
-	/*$gump = new GUMP();
-
-	$gump->validation_rules(array(
-		'name'    => 'required|alpha_numeric|max_len,50|min_len,6',
-		'email'   => 'required|valid_email',
-		'phone' => 'required'
-	));
-
-	$gump->filter_rules(array(
-		'name' => 'trim|sanitize_string',
-		'email'    => 'trim|sanitize_email',
-	));
-
-	$validated_data = $gump->run($_POST);
-
-	if($validated_data === false) {
-		echo $gump->get_readable_errors(true);
-	} else {
-		print_r($validated_data); // validation successful
-	}*/
-
-
-
-
-
 
 // ------------ Connect to DB -------------//
-	$server = "localhost";
-	$user = "root";
-	$pass = "";
-	$db = "hextris";
-	$table = "leads";
+
+	require "db.php";
 
 	$conn = new mysqli($server, $user, $pass, $db);
 
@@ -52,18 +24,34 @@
 	
 
 	if($_POST){
+
+		//Set session for user identifier for updating the score
+	    session_start();
+	    /*$_SESSION['name'] = '';
+		$_SESSION['email'] = '';*/	
 		
 		$is_valid = GUMP::is_valid($_POST, array(
-				'name' => 'required|alpha_numeric|min_len,3', 
+				'name' => 'required|min_len,3', 
 				'email' => 'required|valid_email|min_len,6', 
 				'phone' => 'required|numeric|max_len,12|min_len,6'
 			));
 
+
 		if($is_valid === TRUE){
-			addUser($conn, $_POST);
+			if(is_exist($conn, $_POST)){
+				// If true sent to games pages
+
+				$_SESSION['name'] = $_POST['name'];
+				$_SESSION['email'] = $_POST['email'];
+				
+				header("Location: mrhex.php");
+			}else{
+				// If false adds the user
+				addUser($conn, $_POST);
+			}
 		}else{
 			foreach($is_valid as $err){
-				$validation_err .= '<span class="msg">' . $err . '</span>';
+				$validation_err .= '<li class="msg">' . $err . '</li>';
 			}
 		}	
 		
@@ -72,20 +60,21 @@
 
 
 
-
 // ------------ Data CRUD Function -------------//
 
 	function addUser($conn, $loginData = null){
 		// Add new player if not exist into db and retrieve the inserted data ID
+
 		$sql = "INSERT INTO leads (name, email, phone) VALUES ('" . $loginData['name'] . "','" . $loginData['email'] . "','" . $loginData['phone'] . "')";
 
 		if ($conn->query($sql) === TRUE) {
-		    $sql = "SELECT id, name, score FROM leads WHERE email = '" . $loginData['email'] . "'";
-		    $result = $conn->query($sql);
 
-		    //var_dump($result->fetch_assoc());
+		    //Set session for user identifier for updating the score
+		    session_start();
+		    $_SESSION['name'] = $loginData['name'];
+    		$_SESSION['email'] = $loginData['email'];
 
-		    header("Location: index.html");
+		    header("Location: mrhex.php");
 		} else {
 		    echo "Error: " . $sql . "<br>" . $conn->error;
 		}
@@ -93,18 +82,56 @@
 		$conn->close();
 	}
 
-	function updateUserScore($id){
-		//echo Update player score in db
+	
+
+
+// ------------- AJAX ------------ //
+
+	if(isset($_POST['action'])){
+		echo $_POST['action']();
+	}
+	
+
+	function getUserData(){
+		//echo 'AJAX function call';
+		$returnData = json_encode(array(
+			'name'=>$_SESSION['name'],
+			'email'=>$_SESSION['email']
+		));
+
+		echo $returnData;
 	}
 
 
+	function updateUserScore(){
+		$data = $_POST['data'];
 
+		$conn = new mysqli('localhost', 'root', '', 'mrhex');
+		//var_dump($data);
+		$sql = "UPDATE leads SET score=" . $data['score'] . "WHERE email ='" . $data['email'] . "'";
+		
+		if($conn->query($sql)){
+			echo true;
+		}else{
+			echo false;
+		}
+
+		$conn->close();
+	}
 
 
 // ------------- Utility ------------ //
 
-	function validateForm($input){
+	function is_exist($conn, $data){
+		$sql = "SELECT id, name FROM leads WHERE email = '" . $data['email'] . "'";
+		$result = $conn->query($sql);
 
+		if($result->fetch_row() > 0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
+	
 ?>

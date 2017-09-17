@@ -121,7 +121,7 @@ function initialize(a) {
 	}
 
 
-	console.log(saveState);
+	//console.log(saveState);
 
 	window.blocks = [];
 	window.MainHex;

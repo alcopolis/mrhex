@@ -28,7 +28,14 @@
 			<input type="text" name="phone" value="<?php if (count($_POST) > 0) echo htmlspecialchars($_POST['phone']);?>" placeholder="No. HP/Telepon" />
 			<input type="submit" value="Masuk" />
 		</form>
-		<p id="err-msg"><?php echo $validation_err; ?></p>
+
+		<?php
+			if($validation_err != ''){
+				echo '<div id="err-msg">
+				<h3>Login Gagal</h3>
+				<ul>' . $validation_err . '</ul></div>';
+			}
+		?>
 
 		<p><span class="partners">Omen HP Logo</span> <span class="partners">Fox Ch Logo</span></p>	
 	</div>

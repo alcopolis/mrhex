@@ -1,3 +1,19 @@
+// Get user data and save it into local storage
+
+var userData;
+
+$.ajax({ url: './inc/connection.php',
+         data: {action: 'getUserData'},
+         type: 'post',
+         success: function(output) {
+                      	//localStorage.setItem("userInfo", output);
+                      	userData = JSON.parse(output);
+                      	//console.log(userData);
+                  }
+});
+
+
+
 function scaleCanvas() {
 	canvas.width = $(window).width();
 	canvas.height = $(window).height();
@@ -251,6 +267,20 @@ function animLoop() {
 		lastTime = now;
 
 		if (checkGameOver() && !importing) {
+
+
+			// Call fungsi untuk update nilai score pemain di database
+				//console.log(score);
+				$.ajax({ url: './inc/connection.php',
+				         data: {action:'updateUserScore' , data: {score:score, email:userData.email}},
+				         type: 'post',
+				         success: function(output) {
+				                      console.log(output);
+				                  }
+				});
+
+			//=========================================
+
 			var saveState = localStorage.getItem("saveState") || "{}";
 			saveState = JSONfn.parse(saveState);
 			gameState = 2;
@@ -342,6 +372,7 @@ function checkGameOver() {
 			}
 			writeHighScores();
 			gameOverDisplay();
+
 			return true;
 		}
 	}
