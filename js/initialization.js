@@ -2,6 +2,16 @@ $(document).ready(function() {
 	initialize();
 });
 function initialize(a) {
+	// Point conversion var
+	window.fullP = 125;				// Max point per user
+    window.maxHexScore = 6000;		// Top score for getting full point
+    window.eventPoint = 0;			// Conversion holder
+
+
+
+
+
+    //======================
 	window.rush = 1;
 	window.lastTime = Date.now();
 	window.iframHasLoaded = false;
@@ -120,8 +130,8 @@ function initialize(a) {
 		}
 	}
 
+	console.log(highscores);
 
-	//console.log(saveState);
 
 	window.blocks = [];
 	window.MainHex;

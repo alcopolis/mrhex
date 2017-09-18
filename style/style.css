@@ -536,21 +536,52 @@
 		src:url("./fonts/Exo2-SemiBold.otf") format("opentype");
 	}
 
+
+	
+
+	/* ============ Game Over Screen ============== */
+	
+	#gameoverscreen #container h1#game-over{
+		background:#852683;
+		color: #FFF;
+		font-size:60px;
+		letter-spacing: -1px;
+		padding: 20px;
+		border-radius: 10px;
+	}
+
+	#ScoreBox{
+		margin:30px 0 15px 0;
+	}
+
+	#PointBox{
+		/*background:#852683;*/
+		padding: 20px;
+		margin:30px 0 15px 0;
+		color: #852683;
+	}
+
 	.GOTitle {
 		font-weight:bold;
-		font-size:24.2000px;
+		font-size:24px;
+	}
+
+	#cScore {
+		font-size:36px;
+		font-weight:light;
+		margin-bottom:15px;
+		color: #39B1CA;
+	}
+
+	#cPoint{
+		font-size:60px;
 	}
 
 	.scoreNum {
 		font-weight:normal ! important;
 	}
 
-	#cScore {
-		font-size:60.5000px;
-		font-weight:light;
-		margin-bottom:5px;
-		margin-top:-10px;
-	}
+
 
 	#highScoresTitle {
 		margin-bottom:2px;
@@ -561,7 +592,9 @@
 		line-height:18px;
 	}
 
+	
 
+	/* ============ Game Over Screen ============== */
 
 
 	#bottomContainer {

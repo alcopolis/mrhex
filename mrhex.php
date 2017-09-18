@@ -95,15 +95,21 @@
 		</div>
 		<div id="gameoverscreen">
 			<div id='container'>
-				<div id='gameOverBox' class='GOTitle'>GAME OVER</div>
-				<div id='cScore'>1843</div>
-				<div id='highScoresTitle' class='GOTitle'>HIGH SCORES</div>
+				<h1 id="game-over">GAME OVER</h1>
+				
+				<div id="PointBox">
+					<div id='cScore'>1843</div>
+					<div class='GOTitle'>Selamat! Kamu Mendapatkan</div>
+					<div id='cPoint'>1823</div>
+				</div>
+
+				<!-- <div id='highScoresTitle' class='GOTitle'>HIGH SCORES</div> -->
 				
 				<!--<div class='score'><span class='scoreNum'>1.</span> <div id="1place" style="display:inline;">0</div></div>
 				<div class='score'><span class='scoreNum'>2.</span> <div id="2place" style="display:inline;">0</div></div>
 				<div class='score'><span class='scoreNum'>3.</span> <div id="3place" style="display:inline;">0</div></div>-->
 				
-				<table style="width: 100%;">
+				<!-- <table style="width: 100%;">
 					<tr class="score">
 						<td class="scoreNum">1</td>
 						<td id="1place">0</td>
@@ -119,10 +125,10 @@
 						<td id="3place">0</td>
 						<td class="scoreName"></td>
 					</tr>
-				</table>
+				</table> -->
 
 			</div>
-			<div id='bottomContainer'>
+			<!-- <div id='bottomContainer'>
 				<img id='restart' src='./images/btn_restart.svg' height='57px'>
 				<div id='socialShare'>
 					<?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -141,7 +147,7 @@
 							</g>
 						</g>
 					</svg>
-				</div>
+				</div> -->
 				<div id='buttonCont'>
 					<!-- <ul class="rrssb-buttons">
 						<li class="rrssb-facebook">

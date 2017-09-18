@@ -96,9 +96,9 @@ function renderBeginningText() {
         fontSize = 35
     } else {
         mob = false
-        input_text = 'TEKS INSTRUKSI AWAL DISINI'
-        action_text = 'to rotate the hexagon'
-        score_text = 'Match 3+ blocks to score!'
+        input_text = 'Gunakan tombol panah kanan/kiri'
+        action_text = 'untuk mengarahkan'
+        score_text = 'Samakan warna 3+ balok untuk mendapatkan nilai!'
         fontSize = 27
     }
 	renderText((trueCanvas.width)/2 + 2 * settings.scale,upperheight-0*settings.scale, fontSize, '#2c3e50', input_text);

@@ -106,18 +106,26 @@
 	function updateUserScore(){
 		$data = $_POST['data'];
 
-		$conn = new mysqli('localhost', 'root', '', 'mrhex');
-		//var_dump($data);
-		$sql = "UPDATE leads SET score=" . $data['score'] . "WHERE email ='" . $data['email'] . "'";
+		$upconn = mysql_connect('localhost', 'root', '');
 		
-		if($conn->query($sql)){
-			echo true;
-		}else{
-			echo false;
+		if (!$upconn) {
+		    die("Connection failed: " . $upconn->connect_error);
+		    echo 'connection error';
 		}
 
-		$conn->close();
+		$sql = "UPDATE leads SET score='" . $data['score'] . "' WHERE email='" . $data['email'] . "'";
+		
+		mysql_select_db('hextris');
+		$retval = mysql_query($sql, $upconn);
+
+		if(! $retval ) {
+	      die('Could not update data: ' . mysql_error());
+	    }
+	    echo "Updated data successfully";
+	    mysql_close($upconn);
 	}
+
+
 
 
 // ------------- Utility ------------ //
