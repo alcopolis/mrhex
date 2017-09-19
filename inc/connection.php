@@ -31,7 +31,7 @@
 		$_SESSION['email'] = '';*/	
 		
 		$is_valid = GUMP::is_valid($_POST, array(
-				'name' => 'required|min_len,3', 
+				'nama' => 'required|min_len,3', 
 				'email' => 'required|valid_email|min_len,6', 
 				'phone' => 'required|numeric|max_len,12|min_len,6'
 			));
@@ -41,7 +41,7 @@
 			if(is_exist($conn, $_POST)){
 				// If true sent to games pages
 
-				$_SESSION['name'] = $_POST['name'];
+				$_SESSION['name'] = $_POST['nama'];
 				$_SESSION['email'] = $_POST['email'];
 				
 				header("Location: mrhex.php");

@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang='en'>
 	<head>
-		<title>Hextris</title>
+		<title>MR.Hex</title>
 		<meta name="apple-itunes-app" content="app-id=903769553"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, minimal-ui"/>
 		<meta property="og:url" content="http://hextris.github.io/hextris/"/>
@@ -85,7 +85,7 @@
 		<img id="pauseBtn" src="./images/btn_pause.svg"/>
 		<img id='restartBtn' src="./images/btn_restart.svg"/>
 		<div id="mr-logo" class="logo">
-			<img src="./images/myrepublic-logo.svg"/>
+			<a href="./"><img src="images/myrep-logo.png" style="width: 100%;" /></a>
 		</div>
 
 		
@@ -128,6 +128,13 @@
 				</table> -->
 
 			</div>
+
+			<div id="bottomContainer">
+				<div id="partners">
+					<span style="color:#999; font-size:14px; text-align: center; display: block;">Partners</span>
+					<p style="text-align: center;"><img src="images/omen-by-hp.png" style="height: 40px; margin:10px 5px;" /> <img src="images/fox.png" style="height: 40px; margin:10px 20px;"/></p>	
+				</div>	
+			</div>
 			<!-- <div id='bottomContainer'>
 				<img id='restart' src='./images/btn_restart.svg' height='57px'>
 				<div id='socialShare'>
@@ -148,6 +155,9 @@
 						</g>
 					</svg>
 				</div> -->
+
+				
+
 				<div id='buttonCont'>
 					<!-- <ul class="rrssb-buttons">
 						<li class="rrssb-facebook">
@@ -174,16 +184,7 @@
 								<span class="rrssb-text">twitter</span>
 							</a>
 						</li>
-					</ul> -->
-					
-					<ul class="rrssb-buttons">
-						<li class="logo">
-							<h1>HP LOGO</h1>
-						</li>
-						<li class="logo">
-							<h1>FOX LOGO</h1>
-						</li>
-					</ul>					
+					</ul> -->		
 				</div>
 			</div>
 		</div>
