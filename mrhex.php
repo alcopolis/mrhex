@@ -91,7 +91,7 @@
 		
 		
 		<div id='highScoreInGameText'>
-			<div id='highScoreInGameTextHeader'>HIGH SCORE</div><div id='currentHighScore'>10292</div>
+			<div id='highScoreInGameTextHeader'>HIGH SCORE</div><div id='currentHighScore'></div>
 		</div>
 		<div id="gameoverscreen">
 			<div id='container'>

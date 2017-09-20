@@ -27,7 +27,7 @@
 
 		//Set session for user identifier for updating the score
 	    session_start();
-	    /*$_SESSION['name'] = '';
+	    /*$_SESSION['nama'] = '';
 		$_SESSION['email'] = '';*/	
 		
 		$is_valid = GUMP::is_valid($_POST, array(
@@ -41,7 +41,7 @@
 			if(is_exist($conn, $_POST)){
 				// If true sent to games pages
 
-				$_SESSION['name'] = $_POST['nama'];
+				$_SESSION['nama'] = $_POST['nama'];
 				$_SESSION['email'] = $_POST['email'];
 				
 				header("Location: mrhex.php");
@@ -65,13 +65,13 @@
 	function addUser($conn, $loginData = null){
 		// Add new player if not exist into db and retrieve the inserted data ID
 
-		$sql = "INSERT INTO leads (name, email, phone) VALUES ('" . $loginData['name'] . "','" . $loginData['email'] . "','" . $loginData['phone'] . "')";
+		$sql = "INSERT INTO leads (nama, email, phone) VALUES ('" . $loginData['nama'] . "','" . $loginData['email'] . "','" . $loginData['phone'] . "')";
 
 		if ($conn->query($sql) === TRUE) {
 
 		    //Set session for user identifier for updating the score
 		    session_start();
-		    $_SESSION['name'] = $loginData['name'];
+		    $_SESSION['nama'] = $loginData['nama'];
     		$_SESSION['email'] = $loginData['email'];
 
 		    header("Location: mrhex.php");
@@ -95,7 +95,7 @@
 	function getUserData(){
 		//echo 'AJAX function call';
 		$returnData = json_encode(array(
-			'name'=>$_SESSION['name'],
+			'nama'=>$_SESSION['nama'],
 			'email'=>$_SESSION['email']
 		));
 
@@ -108,10 +108,10 @@
 
 		$upconn = mysql_connect('localhost', 'root', '');
 		
-		if (!$upconn) {
-		    die("Connection failed: " . $upconn->connect_error);
-		    echo 'connection error';
-		}
+		// if (!$upconn) {
+		//     die("Connection failed: " . $upconn->connect_error);
+		//     echo 'connection error';
+		// }
 
 		$sql = "UPDATE leads SET score='" . $data['score'] . "' WHERE email='" . $data['email'] . "'";
 		
@@ -126,12 +126,37 @@
 	}
 
 
+	function getHighscores(){
+		$limit = 1;
+		$dataReturn = null;
+
+		$upconn = mysql_connect('localhost', 'root', '');
+		$sql = "SELECT * FROM leads ORDER BY score DESC LIMIT " . $limit;
+		
+		mysql_select_db('hextris');
+		$retval = mysql_query($sql, $upconn);
+
+		while($row = mysql_fetch_array($retval)){
+			//var_dump($row);
+			$dataReturn = $row['score'] . '<span style="font-size:11px; display:block;">' . $row['nama'] . '</span>';
+		}
+
+
+		if(isset($_POST)){
+			// ajax call
+			echo $dataReturn;
+		}else{
+			// not ajax call for scoreboard page
+			//echo "Not ajax call";
+			return false;
+		}
+	}
 
 
 // ------------- Utility ------------ //
 
 	function is_exist($conn, $data){
-		$sql = "SELECT id, name FROM leads WHERE email = '" . $data['email'] . "'";
+		$sql = "SELECT id, nama FROM leads WHERE email = '" . $data['email'] . "'";
 		$result = $conn->query($sql);
 
 		if($result->fetch_row() > 0){
@@ -140,6 +165,9 @@
 			return false;
 		}
 	}
+
+
+
 
 	
 ?>

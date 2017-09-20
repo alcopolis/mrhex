@@ -13,6 +13,21 @@ $.ajax({ url: './inc/connection.php',
 });
 
 
+//===================== Get Highscores From DB ===================== //
+
+$.ajax({ url: './inc/connection.php',
+         data: {action: 'getHighscores'},
+         type: 'post',
+         success: function(output) {
+                      $("#currentHighScore").html(output);
+                  }
+});
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
+
 
 function scaleCanvas() {
 	canvas.width = $(window).width();
@@ -118,12 +133,12 @@ function init(b) {
 		clearSaveState();
 		checkVisualElements();
 	}
-	if (highscores.length === 0 ){
-		$("#currentHighScore").text(0);
-	}
-	else {
-		$("#currentHighScore").text(highscores[0])
-	}
+	// if (highscores.length === 0 ){
+	// 	$("#currentHighScore").text(0);
+	// }
+	// else {
+	// 	$("#currentHighScore").text(highscores[0])
+	// }
 	infobuttonfading = true;
 	$("#pauseBtn").attr('src',"./images/btn_pause.svg");
 	hideUIElements();
