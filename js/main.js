@@ -15,14 +15,17 @@ $.ajax({ url: './inc/connection.php',
 
 //===================== Get Highscores From DB ===================== //
 
-$.ajax({ url: './inc/connection.php',
-         data: {action: 'getHighscores'},
-         type: 'post',
-         success: function(output) {
-                      $("#currentHighScore").html(output);
-                  }
-});
+function getDBHighScores(){
+	$.ajax({ url: './inc/connection.php',
+	         data: {action: 'getHighscores'},
+	         type: 'post',
+	         success: function(output) {
+	                      $("#currentHighScore").html(output);
+	                  }
+	});
+}
 
+getDBHighScores();
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -291,8 +294,14 @@ function animLoop() {
 				         type: 'post',
 				         success: function(output) {
 				                      console.log(output);
+
+				                      //Call fungsi untuk update highscore dari mysql
+										getDBHighScores();
 				                  }
 				});
+
+
+			
 
 			//=========================================
 

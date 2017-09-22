@@ -20,9 +20,10 @@
 		<img src="images/myrep-logo.png"  style="width:500px; display: block; margin: 0 auto;" />
 		<img src="images/compfest-logo.png"  style="width:250px;  display: block; margin: 0 auto;" />
 
-        <p style="margin-top: 30px; padding-bottom: 10px; font-weight: bold;">Ayo daftar dan mainkan game ini untuk mendapatkan poin!</p>
+        
          
-		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" style="padding: 60px 0 40px 0;">
+			<p style="padding-bottom: 10px; font-weight: bold;">Ayo daftar dan mainkan game ini untuk mendapatkan poin!</p>
 			<input type="text" name="nama" value="<?php if (count($_POST) > 0) echo htmlspecialchars($_POST['nama']);?>" placeholder="Nama Lengkap" />
 			<input type="email" name="email" value="<?php if (count($_POST) > 0) echo htmlspecialchars($_POST['email']);?>" placeholder="Email" />
 			<input type="text" name="phone" value="<?php if (count($_POST) > 0) echo htmlspecialchars($_POST['phone']);?>" placeholder="No. HP/Telepon" />

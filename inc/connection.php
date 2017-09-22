@@ -137,7 +137,6 @@
 		$retval = mysql_query($sql, $upconn);
 
 		while($row = mysql_fetch_array($retval)){
-			//var_dump($row);
 			$dataReturn = $row['score'] . '<span style="font-size:11px; display:block;">' . $row['nama'] . '</span>';
 		}
 

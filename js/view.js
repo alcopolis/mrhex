@@ -162,7 +162,12 @@ function gameOverDisplay() {
 }
 
 function updateHighScores (){
-    eventPoint = Math.floor((score/maxHexScore) * fullP);
+	if(score >= maxHexScore){
+		eventPoint = fullP;
+	}else{
+		eventPoint = Math.floor((score/maxHexScore) * fullP);
+	}
+    
 
     $("#cScore").text('Score: ' + score);
     $("#cPoint").text(eventPoint + " Poin");
