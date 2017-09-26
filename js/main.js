@@ -6,29 +6,41 @@ $.ajax({ url: './inc/connection.php',
          data: {action: 'getUserData'},
          type: 'post',
          success: function(output) {
-                      	//localStorage.setItem("userInfo", output);
                       	userData = JSON.parse(output);
-                      	//console.log(userData);
                   }
 });
 
 
-//===================== Get Highscores From DB ===================== //
+//===================== AJAX ===================== //
 
 function getDBHighScores(){
 	$.ajax({ url: './inc/connection.php',
 	         data: {action: 'getHighscores'},
 	         type: 'post',
 	         success: function(output) {
-	                      $("#currentHighScore").html(output);
+	                    $("#currentHighScore").html(output);
 	                  }
 	});
 }
 
-getDBHighScores();
+function resetSession(){
+	$.ajax({ url: './inc/connection.php',
+	         data: {action: 'resetSession'},
+	         type: 'post',
+	         success: function(output) {
+	                    console.log('reset success');
+	                  }
+	});
+}
 
 
 /////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+getDBHighScores();
+
 
 
 
@@ -293,10 +305,9 @@ function animLoop() {
 				         data: {action:'updateUserScore' , data: {score:score, email:userData.email}},
 				         type: 'post',
 				         success: function(output) {
-				                      console.log(output);
-
-				                      //Call fungsi untuk update highscore dari mysql
-										getDBHighScores();
+				                    //Call fungsi untuk update highscore dari mysql
+									getDBHighScores();
+									resetSession();
 				                  }
 				});
 

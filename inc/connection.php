@@ -107,11 +107,6 @@
 		$data = $_POST['data'];
 
 		$upconn = mysql_connect('localhost', 'root', '');
-		
-		// if (!$upconn) {
-		//     die("Connection failed: " . $upconn->connect_error);
-		//     echo 'connection error';
-		// }
 
 		$sql = "UPDATE leads SET score='" . $data['score'] . "' WHERE email='" . $data['email'] . "'";
 		
@@ -165,8 +160,8 @@
 		}
 	}
 
-
-
-
+	function resetSession(){
+		session_unset();
+	}
 	
 ?>
