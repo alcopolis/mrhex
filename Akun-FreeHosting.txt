@@ -1,0 +1,22 @@
+hga54413@loaoa.com
+qwerty
+
+===========================================================================================================================================================
+
+
+---------------------------------------------------
+
+Cpanel Username: b32_20757343
+Cpanel Password: qwerty
+Your URL: http://tesah.byethost32.com or http://www.tesah.byethost32.com
+FTP Server : ftp.byethost32.com
+FTP Login : b32_20757343
+FTP Password : qwerty
+MySQL Database Name: MUST CREATE IN CPANEL
+MySQL Username : b32_20757343
+MySQL Password : qwerty
+MySQL Server: SEE THE CPANEL
+
+
+Cpanel URL: http://cpanel.byethost32.com/
+---------------------------------------------------

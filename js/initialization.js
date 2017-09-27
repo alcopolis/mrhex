@@ -4,7 +4,7 @@ $(document).ready(function() {
 function initialize(a) {
 	// Point conversion var
 	window.fullP = 125;				// Max point per user
-    window.maxHexScore = 6000;		// Top score for getting full point
+    window.maxHexScore = 4000;		// Top score for getting full point
     window.eventPoint = 0;			// Conversion holder
 
 
@@ -129,8 +129,6 @@ function initialize(a) {
 			highscores = [];
 		}
 	}
-
-	console.log(highscores);
 
 
 	window.blocks = [];

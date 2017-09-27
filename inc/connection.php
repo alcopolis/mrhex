@@ -1,5 +1,6 @@
 <?php 
 
+
 // ----------- Validation Class -------------//
 	require "gump.class.php";
 
@@ -122,8 +123,8 @@
 
 
 	function getHighscores(){
-		$limit = 1;
-		$dataReturn = null;
+		$limit = 3;
+		$dataReturn = '';
 
 		$upconn = mysql_connect('localhost', 'root', '');
 		$sql = "SELECT * FROM leads ORDER BY score DESC LIMIT " . $limit;
@@ -132,7 +133,7 @@
 		$retval = mysql_query($sql, $upconn);
 
 		while($row = mysql_fetch_array($retval)){
-			$dataReturn = $row['score'] . '<span style="font-size:11px; display:block;">' . $row['nama'] . '</span>';
+			$dataReturn .= '<p class="best-score">' . $row['score'] . '<span style="font-size:11px; display:block;">' . $row['nama'] . '</span></p>';
 		}
 
 

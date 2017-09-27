@@ -46,6 +46,16 @@
 		list-style-type: none;
 		padding: 3px 0;
 	}
+
+	p.best-score{
+		padding-bottom: 0; 
+		margin-bottom:10px;
+		font-size: 22px;
+	}
+
+	p.best-score:nth-child(n+4){
+		color:#CCC !important;
+	}
 	
 	/* ============ LOGO ============== */
 
@@ -293,6 +303,9 @@
 	#highScoreInGameTextHeader {
 		color: #bdc3c7;
 		width:100%;
+		border-bottom: 1px dotted #ccc;
+	    padding-bottom: 10px;
+	    margin-bottom: 10px;
 	}
 
 	/*#highScoreInGameText {
